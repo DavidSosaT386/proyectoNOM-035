@@ -1,0 +1,247 @@
+
+{% load static %}
+<!doctype html>
+
+<head>
+
+<title>CFE</title>
+
+<!-- Archivos JavaScript y css-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/estilo_personalizadocss/estilos.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/estilo_personalizadocss/estilosprincipal.css' %}">
+
+<link rel="icon" type="image/png" href='{% static 'img/principalimg/CFEloguito.png' %}' />
+<link rel="stylesheet" type="text/css" href='{% static 'css/principalcss/bootstrap.min.css' %}' />
+<script src="{% static 'js/loginjs/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/loginjs/animsition.min.js' %}"></script>
+<script src="{% static 'js/loginjs/popper.js' %}"></script>
+<script src="{% static 'js/loginjs/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/loginjs/select2.min.js' %}"></script>
+<script src="{% static 'js/loginjs/moment.min.js' %}"></script>
+<script src="{% static 'js/loginjs/daterangepicker.js' %}"></script>
+<script src="{% static 'js/loginjs/countdowntime.js' %}"></script>
+<script src="{% static 'js/loginjs/main.js' %}"></script>
+<script src="{% static 'lib/highcharts-9.2.2/highcharts.js' %}"></script>
+<script src="{% static 'lib/highcharts-9.2.2/modules/cylinder.js' %}"></script>
+<script src="{% static 'lib/highcharts-9.2.2/modules/exporting.js' %}"></script>
+<script src="{% static 'lib/highcharts-9.2.2/modules/export-data.js' %}"></script>
+<script src="{% static 'lib/highcharts-9.2.2/modules/accessibility.js' %}"></script>
+<script src="{% static 'lib/highcharts-9.2.2/modules/data.js' %}"></script>
+<script src="{% static 'lib/highcharts-9.2.2/highcharts-3d.js' %}"></script>
+<!--=====================================================================-->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+ 
+  </head>
+
+  <body> 
+
+ <!--MODALES-->
+
+ <!-- Modal Nom-035   -->
+  {% include "norma035.html" %}
+
+ <!-- Modal Politicas   -->
+   {% include "politicas.html" %}
+
+ <!-- Modal confirmación   -->
+   {% include "confirmainicio.html" %}
+
+<!--=====================================-->
+
+ <!--NAVBAR-->
+
+    {% block content %}
+       {% if empleados %}
+
+<nav class="navbar navbar-expand-md fixed-top" style="background-color:#198754">
+     <div class="container-fluid">
+
+          {% block boton_salir %}
+               <div style="margin-right: 92px; margin-bottom: 3px;"> <a href={% if user.is_authenticated %} "{% url 'inicioAdmin' %}" {% else %}"{% url 'ini' %}" {% endif %} style="color:#FFFFFF;">{% if user.is_authenticated %} Regresar {% else %}Salir {% endif %}
+              <img src="{% static 'img/principalimg/ic_logout.png' %}" /></a> </div>
+          {% endblock boton_salir %}
+
+
+            <form class="form-inline mt-2 mt-md-0  text-white tituloZona" >                
+                     
+              {% if empleados.centro_trabajo == 'PK001' %}
+            
+              Oficina sede de la GRTSE
+              {% elif empleados.centro_trabajo == 'PK0A0'%}
+            
+              Zona de transmisión Villahermosa
+              {% elif empleados.centro_trabajo == 'PK0B0'%}
+              
+              Zona de transmisión Tuxtla
+              {% elif empleados.centro_trabajo == 'PK0C0'%}
+              
+              Zona de transmisión Tapachula
+              {% elif empleados.centro_trabajo == 'PK0D0'%}
+             
+              Zona de transmisión Istmo
+              {% elif empleados.centro_trabajo == 'PK0E0'%}  
+              
+              Zona de transmisión Malpaso  
+              {% elif empleados.centro_trabajo == 'PK0F0'%}
+             
+              Zona de operación de transmisión STE
+              {% elif empleados.centro_trabajo == 'PK0A1'%}
+             
+              Zona de transmisión Villahermosa sector Chontalpa
+              {% elif empleados.centro_trabajo == 'PK0B1'%}
+             
+              Zona de transmisión Tuxtla sector Chicoasén
+              {% elif empleados.centro_trabajo == 'PK0D1'%}
+             
+              Zona de transmisión Istmo sector Oaxaca potencia
+              {% elif empleados.centro_trabajo == 'PK0E1'%}
+             
+              Zona de transmisión Malpaso sector Peñitas
+              {% elif empleados.centro_trabajo == 'PK0B2'%}
+             
+              Zona de transmisión Tuxtla sector Angostura
+              {% endif %}     
+
+            - {{empleados.centro_trabajo}} 
+
+          </form>
+     
+ <form class="form-inline mt-2 mt-md-0  text-white" >   
+              {{empleados.nombre}}
+              {{empleados.apellidos}}--
+            
+{% if empleados.foto_perfil %}
+<img src="{{empleados.foto_perfil.url}}" style="width: 40px;height: 50px; border: black; border-radius: 30px;" >
+{% endif %}
+ </br>
+
+
+ 
+</form>
+
+     </div>
+</nav>
+<!--=====================================-->
+
+ <!--CONDICIONAL-->
+
+{% if answer %}
+<main class="container">
+  <div class="bg-withe p-5 rounded " style="margin-top: 20px;">
+       <center>     
+          {% block yaresponde %}
+             {% include "yarespondio.html" %}
+          {% endblock yaresponde %}
+       </center>     
+  </div>
+</main>
+
+{% else %}
+
+<main class="container">
+  <div class="bg-withe p-5 rounded ">
+     {% block cabezal %}
+        {% include "head.html" %}
+      {% endblock cabezal %}
+       </div>
+</main>
+
+
+<!--INICIO-->
+
+<div class=" col-lg-12" id="padin">     
+   <div class="card my-6" > 
+                                         
+       {% block cuestionario %}    <!--bloque de preguntas-->   
+    <center >
+     <br>
+<form class="form-check" method="POST" action="{% url 'next' empleados.RPE page %}" >
+ {% csrf_token %}     
+  </br> 
+   </br>
+      <button disabled class=" btn btn-success" id="bncomenzar" style="width: 200px; height: 50px;" type="submit"  >  
+            <p class="lead " style="font-family: Calibri"> INICIAR ENCUESTA</p>
+      </button>
+      </br>
+        </br>   
+  <input type="checkbox" name="check1" id="ch1" onclick="habilitar()">
+  <label for="check1">He leido las politicas y deseo contestar la encuesta</label>
+   </br>
+    </br>
+     </br>
+      </br>
+       
+
+</form>
+    </center>
+
+
+<!--Funcion js-->  
+<script>
+function habilitar() {
+  document.getElementById("bncomenzar").disabled=false;
+  document.getElementById("ch1").disabled=true;
+ swal("Advertencia","Una vez iniciada la encuesta debe terminarla", 'warning');}
+</script>
+<!--======================-->  
+
+ {% endblock cuestionario %}  <!--bloque de preguntas-->  
+
+  </div>
+ </div>
+ {% endif %}
+<!--===========FIN===========-->
+
+
+<!--El usuario  no existe-->  
+    {% else %}
+    {% include "nohay.html" %}
+     {% endif %}
+<!----> 
+
+ {% endblock %}
+
+<!--Mensaje de finalizado-->
+
+<script src="{% static 'js/sweetalert.min.js' %}"></script>
+{% if messages %}
+   {% for m in messages %}
+        <script>
+       swal({
+           title: "Encuesta finalizada",
+           text: "{{m}}",
+           icon: "success",
+             });
+         </script>
+   {% endfor %}
+{% endif %}
+<!--Mensaje de finalizado-->
+
+
+ </body>
+<!--footer-->
+
+ <footer id= "footerx" style="height: max-content;">
+    <div class="text-center p-3">
+<div class="row  justify-content-between">
+    <div class="col-3">
+        <a href="#" data-title="¿Qué es la NOM-035-STPS-2018?" data-toggle="modal"  data-target="#nom035" style="color: #ffffff"><p  style = "font-family:helvetica ">¿Qué es la NOM-035-STPS-2018?</p>
+            </a>
+    </div>
+    
+    <div class="col-1">
+         <a href="#" data-title="politicas de privacidad" data-toggle="modal"  data-target="#politicas" style="color: #ffffff"><p  style = "font-family:helvetica ">Políticas</p>
+          
+    </div>
+  </div>
+
+   
+         
+    
+     </div>
+ 
+</footer>
+</html>

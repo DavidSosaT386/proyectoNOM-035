@@ -1,0 +1,18 @@
+{% load static %}
+
+	<link rel="stylesheet" href='{% static 'css/nohaycss/estilo.css' %}'/>
+
+<body>
+	<div id="notfound">
+		<div class="notfound">
+			<div class="notfound-404">
+				<div>
+                            </div>
+				<h1>!</h1>
+			</div>
+			<h2>Usuario Inexistente</h2>
+			<p>El RPE ingresado no corresponde a ningún usuario registrado, por favor intente de nuevo</p>
+                     <a href="{% url 'ini' %}">Regresar</a>  
+		</div>
+
+</body>

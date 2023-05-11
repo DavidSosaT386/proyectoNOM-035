@@ -1,0 +1,433 @@
+{% extends "layout.html" %}
+ {% block cuestionario %}
+{% load static %}
+
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+<!---->
+
+<div class="container-fluid" >
+
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class='buttons'>
+
+<table width="105%">
+        <tr>
+          <td>
+         <div> <!--botones-->
+  <button id='2000' class='btn btn-success' >
+    Puntaje total
+  </button>
+  <button id='2004' class='btn btn-secondary'>
+    Puntaje por categoria
+  </button>
+  <button id='2008' class='btn btn-secondary'>
+    Puntaje por dominio
+  </button>
+</div>  <!---->
+          </td>
+          <td>
+
+<div}> <!--alerta-->
+{% if resultados.atencion_clinica == True %}
+
+<img  data-toggle="tooltip" data-placement="bottom" title="Empleado requiere de atención médica" style="width: 70px; margin-top: 10px;" src="{% static 'img/principalimg/alertamedica.jpg' %}">
+
+{% elif resultados.atencion_clinica == False %}
+    <img  data-toggle="tooltip" data-placement="bottom" title="Empleado no requiere de atención médica" style="width: 60px; margin-top: 10px;" src="{% static 'img/principalimg/bienmedico.png' %}">
+{% endif %}
+</div>  <!---->
+        </td>
+        </tr>
+      </table>
+</div>
+
+<div id="container"></div> <!--Grafica-->
+
+    </div>
+  </div>
+</div>
+
+
+
+<center>
+<table style="width: 500px;">
+    <tr>
+        <th>
+            Simbologia
+        </th>
+    </tr>
+
+    <tr>
+      <td>
+    <span id="circulorojo" class="dot-rojo dot">
+    </span>
+    <label for="circulorojo">Muy alto</label>
+    </td>
+  
+      <td>
+    <span id="circulonaranja" class="dot-naranja dot">
+    </span>
+    <label for="circulonaranja">Alto</label>
+    </td>
+  
+      <td>
+        <span id="circuloamarillo" class="dot-amarillo dot">
+        </span>
+        <label for="circuloamarillo">Medio</label>
+      </td>
+      <td>
+        <span id="circuloverde" class="dot-verde dot">
+        </span>
+        <label for="circuloverde">Bajo</label>
+      </td>
+      <td>
+        <span id="circuloazul" class="dot-azul dot">
+        </span>
+        <label for="circuloazul">Nulo</label>
+      </td>
+  
+    </tr>
+  </table>
+</center>
+<script type="application/javascript">
+
+var c1=({{resultados.cat1}}), c2 = ({{resultados.cat2}}), c3 = ({{resultados.cat3}}) , c4 = ({{resultados.cat4}}), c5 = ({{resultados.cat5}});
+var tot = ({{resultados.total}});
+var d1=({{resultados.dom1}}),d2=({{resultados.dom2}}),d3=({{resultados.dom3}}),d4=({{resultados.dom4}}),d5=({{resultados.dom5}}),d6=({{resultados.dom6}}),d7=({{resultados.dom7}}),d8=({{resultados.dom8}}),d9=({{resultados.dom9}}),d10=({{resultados.dom10}});
+
+
+
+// Create the chart
+
+var data = {
+    2008: [
+        ['Condiciones en el ambiente de trabajo', d1],//['Condiciones en el ambiente de trabajo', d1],
+        ['Carga de trabajo', d2],
+        ['Falta de control sobre el trabajo', d3],
+        ['Jornada de trabajo', d4],
+        ['Interferencia en la relación trabajo-familia', d5],
+        ['Liderazgo', d6],
+        ['Relaciones en el trabajo', d7],
+        ['Violencia', d8],
+        ['Reconocimiento del desempeño', d9],
+        ['Insuficiente sentido depertenencia e inestabilidad', d10],
+        
+    ],
+    
+    2004: [
+        
+        ['Ambiente de trabajo', c1],
+        ['Factores propios de la actividad', c2],
+        ['Organización del tiempo de trabajo', c3],
+        ['Liderazgo y relaciones en el trabajo', c4],
+        ['Entorno organizacional', c5]
+    ],
+    2000: [
+        
+        ['Total', tot]
+    ]
+    
+};
+
+var puntajes = [
+{
+    name: 'Condiciones en el ambiente de trabajo',////'Condiciones en el ambiente de trabajo',
+    flag: 197408,
+    color: " {{colcat.dom1}} "//obtenerColord(d1,5,9,11,14)
+},
+{
+    name: 'Carga de trabajo',
+    flag: 197408,
+    color: " {{colcat.dom2}} "//obtenerColord(d2,15,21,27,37)
+},
+{
+    name: 'Falta de control sobre el trabajo',
+    flag: 197408,
+    color: " {{colcat.dom3}} "//obtenerColord(d3,11,16,21,25)
+},
+{
+    name: 'Jornada de trabajo',
+    flag: 197408,
+    color: " {{colcat.dom4}} "//obtenerColord(d4,1,2,4,6)
+},
+{
+    name: 'Interferencia en la relación trabajo-familia',
+    flag: 197408,
+    color: " {{colcat.dom5}} "//obtenerColord(d5,4,6,8,10)
+},
+{
+    name: 'Liderazgo',
+    flag: 197408,
+    color: " {{colcat.dom6}} "//obtenerColord (d6,9,12,16,20)
+},
+{
+    name: 'Relaciones en el trabajo',
+    flag: 197408,
+    color: " {{colcat.dom7}} "//obtenerColord(d7,10,13,17,21)
+},
+{
+    name: 'Violencia',
+    flag: 197408,
+    color: " {{colcat.dom8}} "//obtenerColord(d8,7,10,13,16)
+},
+{
+    name: 'Reconocimiento del desempeño',
+    flag: 197408,
+    color: " {{colcat.dom9}} "//obtenerColord(d9,6,10,14,18)
+},
+{
+    name: 'Insuficiente sentido depertenencia e inestabilidad',
+    flag: 197408,
+    color: " {{colcat.dom10}} "//obtenerColord(d10,4,6,8,10)
+}
+
+];
+
+var puntajes2=[
+  {
+    name: 'Ambiente de trabajo',
+    flag: 197582,
+    color: " {{colcat.cat1}} "//obtenerColor(c1,5,9,11,14)
+}, {
+    name: 'Factores propios de la actividad',
+    flag: 197604,
+    color: " {{colcat.cat2}} "//obtenerColor(c2,15,30,45,60)
+}, {
+    name: 'Organización del tiempo de trabajo',
+    flag: 197507,
+    color: " {{colcat.cat3}} "//obtenerColor(c3,5,7,10,13)
+}, {
+    name: 'Liderazgo y relaciones en el trabajo',
+    flag: 197571,
+    color: " {{colcat.cat4}} "//obtenerColor(c4,14,29,42,58)
+}, {
+    name: 'Entorno organizacional',
+    flag: 197408,
+    color: " {{colcat.cat5}} "//obtenerColor(c5,10,14,18,23)
+}
+];
+
+var puntajes3=[
+  {
+    name: 'Total',
+    flag: 197484,
+    color: " {{colcat.total}} "
+}
+];
+
+var banderilla = 1;
+
+
+function getData(data,asignador) {
+
+
+    return asignador, data.map(function (country, i) {
+
+      if (asignador==1) {
+
+        return {
+            name: country[0],
+            y: country[1],
+            color: puntajes3[i].color
+        };
+      }
+
+      else if(asignador == 2){
+        return {
+            name: country[0],
+            y: country[1],
+            color: puntajes2[i].color
+        };
+
+      }
+
+      else if (asignador==3) {
+
+        return {
+            name: country[0],
+            y: country[1],
+            color: puntajes[i].color
+        };
+      }
+        
+    });
+      }
+
+
+var chart = Highcharts.chart('container', {
+
+
+    chart: {
+        type: 'column'
+    },
+
+    
+
+    credits: {
+      enabled:false
+},
+    title: {
+        text: 'Puntaje Final',
+        align: 'left'
+    },
+    subtitle: {
+        text: 'RESULTADOS DE LA ENCUESTA',
+        align: 'left'
+    },
+    plotOptions: {
+        series: {
+
+            grouping: false,
+            borderWidth: 0
+        },
+        column: {            
+            borderRadius: 5
+        }
+    },
+    legend: {
+        enabled: false
+    },
+    tooltip: {
+        shared: true,
+        headerFormat: '<span style="font-size: 15px">{point.point.name}</span><br/>',
+        pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.y} puntos</b><br/>'
+    },
+    xAxis: {
+        type: 'category',
+        max: 0,
+        labels: {
+            useHTML: true,
+            animate: true,
+            formatter: function () {
+                var value = this.value,
+                    output;
+
+                    if (banderilla == 1 ) {
+
+                      puntajes3.forEach(function (country) {
+                    if (country.name === value) {
+                        output = country.name;
+                        
+                    }
+                });
+                    }
+
+                      else if (banderilla == 2) {
+                        puntajes2.forEach(function (country) {
+                    if (country.name === value) {
+                        output = country.name;
+                        
+                    }
+                });
+                      }
+
+                       else if (banderilla == 3) {
+                          puntajes.forEach(function (country) {
+                    if (country.name === value) {
+                        output = country.name;
+                        
+                    }
+                });
+                        }
+
+                
+
+                return '<span>' + output + '<br></span>';
+            }
+        }
+    },
+    yAxis: [{
+        title: {
+            text: 'Puntos Obtenidos'
+        },
+        showFirstLabel: false
+    }],
+    series: [ {
+        name: 'Puntaje: ',
+        id: 'main',
+        dataSorting: {
+            enabled: true,
+            matchByName: true
+        },
+        dataLabels: [{
+            enabled: true,
+            inside: true,
+            style: {
+                fontSize: '16px'
+            }
+        }],
+        data:  getData(data[2000],banderilla).slice()
+    }],
+   exporting: {
+    enabled: false
+  }
+});
+
+var years = [2008, 2004, 2000];
+
+
+years.forEach(function (year) {
+    var btn = document.getElementById(year);
+
+
+    btn.addEventListener('click', function () {
+
+      
+
+        document.querySelectorAll('.btn  ').forEach(function (active) {
+            active.className = 'btn btn-secondary ';
+        });
+        btn.className = 'btn btn-success';
+
+        var x=0;
+
+        if (year==2000) {
+          x=0;
+          banderilla=1;
+        }
+        else if (year==2004) {
+          x=4;
+          banderilla = 2;
+        }
+        else if (year== 2008){
+          x=9;
+          banderilla = 3;
+        }
+
+
+
+        chart.update({
+          
+            title: {
+                text: 'Puntaje Final'
+            },
+            subtitle: {
+              
+                text: 'resultados'
+            },
+            xAxis: {
+              max: x
+            },
+            series: [{
+                name: 'Puntaje: ',
+                data: getData(data[year],banderilla).slice()
+            }]
+        }, true, false, {
+
+            duration: 1000
+        });
+    });
+});
+</script>
+
+
+ {% endblock cuestionario %}
+
+
+ 

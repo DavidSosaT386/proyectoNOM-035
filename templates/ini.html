@@ -1,0 +1,89 @@
+{% load static %}
+
+<html>
+<head>
+<title>CFE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href='{% static 'img/principalimg/CFEloguito.png' %}' />
+<link rel="stylesheet" type="text/css" href='{% static 'css/logincss/bootstrap.min.css' %}' />
+<link rel="stylesheet" type="text/css" href='{% static 'css/logincss/font-awesome.min.css' %}'>
+<link rel="stylesheet" type="text/css" href='{% static 'css/logincss/animate.css' %}' />
+<link rel="stylesheet" type="text/css" href='{% static 'css/logincss/hamburgers.min.css' %}' />
+<link rel="stylesheet" type="text/css" href='{% static 'css/logincss/animsition.min.css' %}' />
+<link rel="stylesheet" type="text/css" href='{% static 'css/logincss/select2.min.css' %}' />
+<link rel="stylesheet" type="text/css" href='{% static 'css/logincss/daterangepicker.css' %}' />
+<link rel="stylesheet" type="text/css" href='{% static 'css/logincss/util.css' %}' />
+<link rel="stylesheet" type="text/css" href='{% static 'css/logincss/main.css' %}'>
+
+<meta name="robots" content="noindex, follow">
+
+
+</head>
+
+<body>
+<div class="limiter">
+<div class="container-login100">
+
+
+
+<div class="wrap-login100">
+
+<form class="login100-form validate-form p-l-55 p-r-55 p-t-178" method="GET" action="{% url 'index'%}" >
+
+<span class="login100-form-title">
+
+ <img src="{% static 'img/loginimg/LogoCFE.png' %}" width="250">
+
+</span>
+
+ <div class="flex-col-c p-t-10 p-b-40">
+
+  <div class="text-center my-3">
+
+<span class="txt1 p-b-9">
+ <h class="lead mb-0" type="text" >Aplicación de encuesta para la NOM-035-STPS-2018</h>
+</span>
+
+</div>
+
+
+<div class="wrap-input100 validate-input m-b-16" data-validate="RPE necesario">
+
+<input class="input100" type="text" name="RPE" placeholder="Ingrese su RPE"  onkeyup="javascript:this.value=this.value.toUpperCase();">
+</div>
+
+<div class="container-login100-form-btn" style="float:right;" >
+<button class="login100-form-btn" name="page" value="1" type="submit" >Iniciar</button>
+</div>
+
+
+<div class="flex-col-c p-t-50 p-b-40">
+<span class="txt1 p-b-9"> </span>
+
+</div>
+
+</form>
+
+
+</div>
+<a class="lead mb-0" style="margin-left: 15px; font-family: Lucida" href={% if user.is_authenticated %} {% url 'inicioAdmin' %} {% else %}"{% url 'login' %}"{% endif %}> Módulo de administración</a>
+</div>
+</div>
+
+                  
+<script src="{% static 'js/loginjs/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/loginjs/animsition.min.js' %}"></script>
+<script src="{% static 'js/loginjs/popper.js' %}"></script>
+<script src="{% static 'js/loginjs/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/loginjs/select2.min.js' %}"></script>
+<script src="{% static 'js/loginjs/moment.min.js' %}"></script>
+<script src="{% static 'js/loginjs/daterangepicker.js' %}"></script>
+<script src="{% static 'js/loginjs/countdowntime.js' %}"></script>
+<script src="{% static 'js/loginjs/main.js' %}"></script>
+
+<script  data-cf-beacon='{"rayId":"685a599f8821d0d8","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.8.1","si":10}' defer src="{% static 'js/loginjs/beacon.min.js' %}"></script>
+</body>
+
+</html>
+

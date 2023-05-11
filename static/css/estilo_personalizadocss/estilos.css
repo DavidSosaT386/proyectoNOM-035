@@ -1,0 +1,185 @@
+
+
+
+.botoncomenzar{
+      background-color: #4CAF50; 
+      border: none;
+      color: white;
+      padding: 15px 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 22px;
+      border-radius: 8px;
+
+
+
+
+
+      
+    }
+
+
+
+
+
+
+    #botonsalir{
+      border: none;
+      color: rgb(255, 255, 255);
+      padding: 5px 5px;
+      text-align: left;
+      font-size: 20px;
+      text-decoration: underline;
+    }
+
+    #largo {       
+        height: 100px; 
+        }
+
+#footerx {
+      height: 70px; 
+      background:#0a9957; 
+      width:100%; 
+      position:fixed; 
+      bottom:0; 
+      left:0;
+      text-align:center;
+      font-family:georgia;
+      }
+
+      #padin {
+      padding-right: 5rem;
+      padding-left: 5rem;
+      padding-bottom: 7rem;
+      }
+
+      p{ 
+    font-family:Helvetica; 
+    margin:8px;
+        }
+
+      
+
+      button.css{
+        border: 1px solid #2e518b; /*anchura, estilo y color borde*/
+        padding: 10px; /*espacio alrededor texto*/
+        background-color: #2e518b; /*color botón*/
+        color: #ffffff; /*color texto*/
+        text-decoration: none; /*decoración texto*/
+        text-transform: uppercase; /*capitalización texto*/
+        font-family: 'Helvetica', sans-serif; /*tipografía texto*/
+        border-radius: 50px; /*bordes redondos*/
+      }
+      
+    .dot-rojo {
+
+  background-color: #ff0000;
+}
+  .dot-naranja {
+
+  background-color: #ffc000;
+
+}
+  .dot-amarillo {
+  background-color: #ffff00;
+}
+  .dot-verde {
+  background-color: #6bf56e;
+}
+  .dot-azul {
+ 
+  background-color: #9be5f7;
+}
+
+.dot{
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+   border-style: solid;
+  display: inline-block;
+}
+
+.degradado{
+    
+   background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1)), url(https://t4.ftcdn.net/jpg/02/97/30/07/360_F_297300732_pfJHla4gl5vCCUzQMHpovN7MokCWbfzG.jpg);
+   /*   url(Imagenes/CFEheader.png);*/
+   background-size: cover;
+ 
+    }
+
+.tituloZona{
+  text-align: left; 
+font-family: Arial rgb(255, 255, 255); 
+font-weight: bold; font-size: 20px; 
+background: #202020; 
+-webkit-background-clip: text; 
+-moz-background-clip: text; 
+background-clip: text; 
+color: transparent; 
+text-shadow: 0px 3px 3px rgba(255,255,255,0.4),0px -1px 1px rgba(0,0,0,0.3);}
+
+.zonafilt{
+  
+background-color: #44B78B;
+}
+
+
+.panel {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  margin-bottom: 30px; }
+  .panel .panel-heading,
+  .panel .panel-body,
+  .panel .panel-footer {
+    padding-left: 25px;
+    padding-right: 25px; }
+  .panel .panel-heading {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: relative; }
+    .panel .panel-heading .panel-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 300; }
+    .panel .panel-heading button {
+      padding: 0;
+      margin-left: 5px;
+      background-color: transparent;
+      border: none;
+      outline: none; }
+      .panel .panel-heading button i {
+        font-size: 14px; }
+  .panel .panel-body {
+    padding-top: 10px;
+    padding-bottom: 15px; }
+  .panel .panel-note {
+    font-size: 13px;
+    line-height: 2.6;
+    color: #777777; }
+    .panel .panel-note i {
+      font-size: 16px;
+      margin-right: 3px; }
+  .panel .right {
+    position: absolute;
+    right: 20px;
+    top: 32%; }
+  .panel.panel-headline .panel-heading {
+    border-bottom: none; }
+    .panel.panel-headline .panel-heading .panel-title {
+      margin-bottom: 8px;
+      font-size: 22px;
+      font-weight: normal; }
+    .panel.panel-headline .panel-heading .panel-subtitle {
+      margin-bottom: 0;
+      font-size: 14px;
+      color: #8D99A8; }
+  
+
+.panel-footer {
+  background-color: #fafafa; }

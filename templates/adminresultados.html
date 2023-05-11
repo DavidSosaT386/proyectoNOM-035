@@ -1,0 +1,62 @@
+{% extends 'admininicio.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/estilo_personalizadocss/estilos.css' %}">
+
+
+<div class="main-content">
+				<div class="container-fluid">
+
+						<div class="panel panel-headline">
+
+				<div class="panel-heading">
+					<h3 class="panel-title">RESULTADOS</h3>
+					<h3 class="panel-title">Empleados que respondieron la encuesta</h3>
+				</div>
+    
+
+<div class="panel-body">
+<div class="scrollme">
+<table class="table table-responsive" style="width: 700px;">
+<thead class="thead-dark">
+    <tr>
+      <th scope="col">RPE</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Fecha en la que contesto la encuesta</th>
+      <th scope="col">Comentario</th>
+    </tr>
+  </thead>
+
+{% if contestaron %}
+ {% for contes in contestaron %}
+  
+ <tr>
+  {% if contes.atencion_clinica == True %}
+ 
+  <th style="background-color: rgba(255, 0, 0, 0.432);"  title="Ver gráfica de resultados"> <a href="{% url 'results' contes.empleado.RPE %}">{{contes.empleado.RPE}}</a></th>
+ {% else %}  
+ <th  title="Ver gráfica de resultados"> <a href="{% url 'results' contes.empleado.RPE %}">{{contes.empleado.RPE}} </a></th>
+ {% endif %}
+ <td> {{contes.empleado.apellidos}}</td>
+ <td> {{contes.empleado.nombre}}</td>
+ <td> {{contes.contestado}}</td>
+ <td> {{contes.comentarios}}</td>
+ 
+ 
+</tr>
+
+ {% endfor %}
+ {% else %}
+<h4> Aun Nadie ha contestado la encuesta</h4> 
+ {% endif %}
+ </table>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock content %}

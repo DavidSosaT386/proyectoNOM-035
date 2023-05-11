@@ -1,0 +1,353 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block boton_salir %}
+<img src="{% static 'img/principalimg/logo_nuevo2_blanco.png' %}" style="height: 50px;">
+{% endblock boton_salir %}
+
+  {% block cabezal %}
+   {% include "headiniciado.html" %}
+    {% endblock cabezal %}
+
+
+
+{% block cuestionario %}
+{% if preguntas %}
+
+  {% if preguntas.has_next %}
+  {% if preguntas.number < 21 %}
+  <center class="mark" >
+  GUIA DE REFERENCIA 1: IDENTIFICACIÓN Y ANÁLISIS DE LOS FACTORES DE RIESGO PSICOSOCIAL
+  CUESTIONARIO PARA IDENTIFICAR LOS FACTORES DE RIESGO PSICOSOCIAL EN LOS CENTROS
+  DE TRABAJO
+</br>
+</br>
+</center >
+  {% elif preguntas.number >= 21 %}
+  <center class="mark" >
+  GUIA DE REFERENCIA 3: CUESTIONARIO PARA IDENTIFICAR LOS FACTORES DE RIESGO PSICOSOCIAL Y EVALUAR EL
+  ENTORNO ORGANIZACIONAL EN LOS CENTROS DE TRABAJO
+</br>
+</br>
+</center >
+
+
+
+
+  {% endif %}
+  {% if preguntas.number < 7 %}
+  <center>
+
+  <div  class="bg-success text-white rounded ">
+  <p>
+  Acontecimiento traumático severo: 
+  ¿Ha presenciado o sufrido alguna vez, durante o con motivo del trabajo un acontecimiento como los siguientes:
+  </p>
+  </div>
+</center>
+  {% elif preguntas.number < 9  %}
+
+   <div  class="bg-success text-white rounded ">
+  <p>
+  Recuerdos persistentes sobre el acontecimiento (durante el último mes):
+  </br>
+  </p>
+  </div>
+
+  {% elif preguntas.number < 17 %}
+  <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+   Esfuerzo por evitar circunstancias parecidas o asociadas al acontecimiento (durante el último mes):
+   </p>
+  </div>
+</center>
+  
+  {% elif preguntas.number < 21 %}
+  <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+  Afectación (durante el último mes):
+   </p>
+  </div>
+</center>
+
+  {% elif preguntas.number < 26 %}
+  <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+ Para responder las preguntas siguientes considere las condiciones ambientales de su centro de trabajo:
+   </p>
+  </div>
+</center>
+
+  {% elif preguntas.number < 29 %}
+  <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+ Para responder a las preguntas siguientes piense en la cantidad y ritmo de trabajo que tiene:
+</p>
+  </div>
+</center>
+  
+  {% elif preguntas.number < 33 %}
+  <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+Las preguntas siguientes están relacionadas con el esfuerzo mental que le exige su trabajo:
+ </p>
+  </div>
+</center>
+ 
+  {% elif preguntas.number < 37 %}
+  <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+Las preguntas siguientes están relacionadas con las actividades que realiza en su trabajo y las responsabilidades que tiene:
+ </p>
+  </div>
+</center>
+
+  {% elif preguntas.number < 43 %}
+   <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+Las preguntas siguientes están relacionadas con su jornada de trabajo:
+ </p>
+  </div>
+</center>
+
+  {% elif preguntas.number < 49 %}
+   <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+  Las preguntas siguientes están relacionadas con las decisiones que puede tomar en su trabajo:
+ </p>
+  </div>
+</center>
+
+  {% elif preguntas.number < 51 %}
+   <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+Las preguntas siguientes están relacionadas con cualquier tipo de cambio que ocurra en su trabajo (considere los últimos cambios realizados):
+ </p>
+  </div>
+</center>
+
+  {% elif preguntas.number < 57 %}
+   <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+Las preguntas siguientes están relacionadas con la capacitación e información que se le proporciona sobre su trabajo:
+ </p>
+  </div>
+</center>
+
+  {% elif preguntas.number < 62 %}
+   <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+Las preguntas siguientes están relacionadas con el o los jefes con quien tiene contacto:
+ </p>
+  </div>
+</center>
+
+  {% elif preguntas.number < 67 %}
+    <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+Las preguntas siguientes se refieren a las relaciones con sus compañeros:
+ </p>
+  </div>
+</center>
+
+  {% elif preguntas.number < 77 %}
+   <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+Las preguntas siguientes están relacionadas con la información que recibe sobre su rendimiento en el trabajo, el reconocimiento, el sentido de pertenencia y la estabilidad que le ofrece su trabajo:
+ </p>
+  </div>
+</center>
+
+  {% elif preguntas.number < 85 %}
+ <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+ Las preguntas siguientes están relacionadas con actos de violencia laboral (malos tratos, acoso, hostigamiento, acoso psicológico):
+</p>
+  </div>
+</center>
+
+  {% elif preguntas.number < 85 %}
+ <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+  Las preguntas siguientes están relacionadas con actos de violencia laboral (malos tratos, acoso, hostigamiento, acoso psicológico):
+</p>
+  </div>
+</center>
+
+  {% elif preguntas.number < 90 %}
+ <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+Las preguntas siguientes están relacionadas con la atención a clientes y usuarios:
+</p>
+  </div>
+</center>
+
+  {% elif preguntas.number < 95 %}
+ <center>
+   <div  class="bg-success text-white rounded ">
+  <p>
+Las preguntas siguientes están relacionadas con las actitudes de las personas que supervisa:
+</p>
+  </div>
+</center>
+
+  {% endif %}
+
+{% for pregunta in preguntas  %}
+  </br>
+  
+
+  
+   <form class="form-check" method="POST" style="font-family:Helvetica; margin-left:20px" action="{% url 'elejido' pregunta.id empleados.RPE preguntas.next_page_number %}" >
+
+
+   {% csrf_token %} 
+        {{pregunta.id}} .-
+        {{pregunta.pregunta}}
+        </br>
+ {% if pregunta.categoria == 1 %}
+ <div class="form-check">
+  <label class="form-check-label">
+    <input type="radio" value="0" name="eleccion" class="form-check-input" >
+    Si
+</label>
+</div>
+<div class="form-check">
+<label class="form-check-label">
+     <input type="radio" value="1" name="eleccion" class="form-check-input" checked>
+      No    
+</label>
+</div>
+
+
+{% elif pregunta.categoria == 2%}
+<div class="form-check">
+  <label class="form-check-label">
+    <input type="radio" value="0" name="eleccion" class="form-check-input" >
+    Siempre
+</label>
+</div>
+<div class="form-check">
+<label class="form-check-label">
+     <input type="radio" value="1" name="eleccion" class="form-check-input">
+  Casi siempre    
+</label>
+</div>
+<div class="form-check">
+  <label class="form-check-label">
+    <input type="radio" value="2" name="eleccion" class="form-check-input" >
+    Algunas veces
+</label>
+</div>
+<div class="form-check">
+<label class="form-check-label">
+     <input type="radio" value="3" name="eleccion" class="form-check-input">
+      Casi nunca
+</label>
+</div>
+<div class="form-check">
+  <label class="form-check-label">
+    <input type="radio" value="4" name="eleccion" class="form-check-input"  checked>
+    Nunca
+</label>
+</div>
+
+{% elif pregunta.categoria == 3%}
+<div class="form-check">
+  <label class="form-check-label">
+    <input type="radio" value="4" name="eleccion" class="form-check-input" checked>
+    Siempre
+</label>
+</div>
+<div class="form-check">
+<label class="form-check-label">
+     <input type="radio" value="3" name="eleccion" class="form-check-input">
+  Casi siempre    
+</label>
+</div>
+<div class="form-check">
+  <label class="form-check-label">
+    <input type="radio" value="2" name="eleccion" class="form-check-input" >
+    Algunas veces
+</label>
+</div>
+<div class="form-check">
+<label class="form-check-label">
+     <input type="radio" value="1" name="eleccion" class="form-check-input">
+      Casi nunca
+</label>
+</div>
+<div class="form-check">
+  <label class="form-check-label">
+    <input type="radio" value="0" name="eleccion" class="form-check-input" >
+    Nunca
+</label>
+</div>
+ {% endif %}       
+   <center>
+     <table>
+       <td>
+         <th>
+{% if preguntas.has_previous %}
+<a href="{% url 'back' empleados.RPE preguntas.previous_page_number%}" class="btn btn-outline-secondary" style="margin-left:25px; margin-bottom:5px; width: 100px ;">Anterior</a>
+{% endif %}
+</th>
+<th>
+  <button class="btn btn-outline-success"  style="margin-left:25px; margin-bottom:5px; width: 100px;" type="submit" >Siguiente</button>
+</th>
+</td>
+</table>
+</center>
+  
+</form>
+
+ {% endfor %}
+<!--
+ {% if preguntas.has_previous %}
+<form class="form-check" method="POST" action="{% url 'back' empleados.RPE preguntas.previous_page_number%}" >
+ {% csrf_token %}
+
+<button class="btn btn-outline-danger " style="padding-left:17px; padding-right:17px; margin-bottom:5px" type="submit" >Anterior</button>
+</form>
+{% endif %}
+-->
+
+
+
+{% else %}
+<form class="form-check" method="POST" action="{% url 'final' empleados.RPE%}" >
+ {% csrf_token %}
+ <div class="form-group border-focus">
+ </br>
+    <div  class=" rounded ">
+  <p>Escribenos tu opinión acerca de esta encuesta</p>
+  </div>
+
+<textarea class="form-control " style="width: 600px; " name="comentario" id="comentario" cols="3"></textarea>
+ 
+</div>
+<a href="{% url 'back' empleados.RPE preguntas.previous_page_number%}" class="btn btn-outline-secondary my-5 float-left" style="margin-left:25px; margin-bottom:5px; width: 100px ;">Anterior</a>
+ 
+  <button  class="  btn btn-success" id="bncomenzar" type="submit" style="background-color:#198754; margin-right: 30px;" >Finalizar encuesta</button>
+
+
+</form>
+
+{% endif %}  
+{% endif %}
+{% endblock cuestionario %}

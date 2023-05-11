@@ -1,0 +1,40 @@
+{% load static %} {% block style %}
+<style>
+  #logoimg {
+    display: block;
+    margin-left: 0;
+    margin-right: auto;
+    width: 20%;
+  }
+</style>
+{% endblock style %}
+
+<header class="py-1 bg-light border-bottom">
+    <div class="text-center my-5">
+      <table border="0" width="100%" height="auto">
+        <tr>
+          <td>
+            <center>
+              <img
+                src="{% static 'img/principalimg/logo_nuevo2.png' %}" border="0" width="220" height="100" align="left"
+              />
+            </center>
+          </td>
+          <td>
+          <h2 class="fw-bolder" style="font-family: Lucida Bright">
+         CUESTIONARIO NOM-035-STPS-2018
+        </h2>
+     
+        </td>
+          <td>
+            <center>
+              <img
+                src="{% static 'img/principalimg/logo_suterm.png' %}" border="0" width="150" height="100" align="right"
+              />
+            </center>
+          </td>
+        </tr>
+      </table>
+    </div>
+</header>
+

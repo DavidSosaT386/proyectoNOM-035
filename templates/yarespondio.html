@@ -1,0 +1,22 @@
+{% load static %}
+
+	<link rel="stylesheet" href='{% static 'css/nohaycss/estilo.css' %}'/>
+
+<body>
+	<div>
+		<div class="notfound"  style= "padding-top: 5.0rem;"  />
+			<div >
+
+  <img
+                src="{% static 'img/principalimg/logo_transmision.png' %}" style="width: 200px;"
+              />
+              	<div>
+                            </div>
+			
+			</div>
+			<h2>USTED YA RESPONDIÓ ESTA ENCUESTA</h2>
+			<p>Gracias por responder, tus respuestas serán muy importantes para la empresa por que diosito le gusta</p>
+                     <a href="{% url 'ini' %}">Regresar</a>  
+		</div>
+
+</body>

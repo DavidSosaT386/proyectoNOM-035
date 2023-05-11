@@ -1,0 +1,178 @@
+{% extends 'admininicio.html' %}
+{% load static %}
+{% block content %}
+
+
+<!--Modal de confirmacion-->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" caller-id="" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+     <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Advertencia</h5>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body confirm-delete">
+        ¿Esta seguro que desea eliminar a este empleado?.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" id="confirmDeleteButtonModal">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  $(document).on('click', '.dropdown-item', function () {
+        $("#confirmDeleteModal").attr("caller-id", $(this).attr("id"));
+      });
+
+    $(document).on('click', '#confirmDeleteButtonModal', function () {
+      var caller = $("#confirmDeleteButtonModal").closest(".modal").attr("caller-id");
+      window.location = $("#".concat(caller)).attr("href");
+    });
+</script>
+
+
+       
+<section>   <!-- seccion de enmedio -->    
+
+  <div class="main-content">
+				<div class="container-fluid">
+						<div class="panel panel-headline">
+				<div class="panel-body">		
+						<div >
+							<h3>LISTADO DE EMPLEADOS</h3>
+							</div>			
+					  <br>
+
+
+<form id="changelist-search" method="get">
+<div><!-- DIV needed for valid HTML -->
+<label for="searchbar"><img src="/static/admin/img/search.svg" alt="Search"></label>
+<input type="text" size="40" name="q" value= {% if busqueda %}"{{busqueda}}" {% else %} ""{% endif %} id="searchbar" autofocus=""  >
+<input type="submit" value="Buscar" style="border-radius: 5px;background-color: #44B78B;">
+
+    <input type="hidden" name="centro_trabajo__exact" value="{{centro}}">
+</div>
+</form>
+
+<br>
+
+<!-- Tabla de empleados-->
+
+
+
+<div class="scrollme">
+<table class="table table-responsive" style="width: 700px;">
+<thead class="thead-dark">
+    <tr>
+      <th scope="col">RPE</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Centro de Trabajo</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+{% if empleados %}
+ {% for empleado in empleados %}
+  
+ <tr>
+ <th  title="Editar empleado"> <a href="{% url 'editarEmpleado' empleado.RPE %}">{{empleado.RPE}}</a></th>
+ <td> {{empleado.apellidos}}</td>
+ <td> {{empleado.nombre}}</td>
+ <td> 
+ {% if empleado.centro_trabajo == 'PK001' %}
+              
+              Oficina sede de la GRTSE
+              {% elif empleado.centro_trabajo == 'PK0A0' %}
+              Zona de transmisión Villahermosa
+              {% elif empleado.centro_trabajo == 'PK0B0' %}
+              Zona de transmisión Tuxtla
+              {% elif empleado.centro_trabajo == 'PK0C0' %}
+              Zona de transmisión Tapachula
+              {% elif empleado.centro_trabajo == 'PK0D0'%}
+              Zona de transmisión Istmo
+              {% elif empleado.centro_trabajo == 'PK0E0' %}
+              Zona de transmisión Malpaso
+              {% elif empleado.centro_trabajo == 'PK0F0'%}
+              Zona de operación de transmisión STE
+              {% elif empleado.centro_trabajo == 'PK0A1'%}
+              Zona de transmisión Villahermosa sector Chontalpa
+              {% elif empleado.centro_trabajo == 'PK0B1'%}
+              Zona de transmisión Tuxtla sector Chicoasén
+              {% elif empleado.centro_trabajo == 'PK0D1'%}
+              Zona de transmisión Istmo sector Oaxaca potencia
+              {% elif empleado.centro_trabajo == 'PK0E1'%}
+              Zona de transmisión Malpaso sector Peñitas
+              {% elif empleado.centro_trabajo == 'PK0B2'%}
+              Zona de transmisión Tuxtla sector Angostura
+              
+            
+
+              {% endif %}
+</td>
+ <td> <a href="{% url 'eliminarEmpleado' empleado.RPE %}" class="dropdown-item text-danger" title="Delete" data-toggle="modal" data-target="#confirmDeleteModal" id="deleteButton{{empleado.RPE}}">Eliminar</a></td>
+ 
+</tr>
+
+ {% endfor %}
+ {% else %}
+ {% endif %}
+ </table>
+</div>
+
+</div></div></div></div>
+
+<!-- Tabla de empleados-->
+
+
+</section>
+
+
+<div style="align-items: center;">
+    <div id="changelist-filter" style="border-radius: 3px; height: 130px; width: 250px;" >
+        <h2 style="background-color: #44B78B; border-radius: 5px; padding-left: 3px; color: white;">Filtrar</h2>     
+<div class="list-filter-dropdown">
+<h3> Por centro trabajo </h3>
+<div align="center">
+    <select style="width: 200px; height: 40px;" onchange="javascript:window.location = this.options[this.selectedIndex].value;">
+    
+        <option value="?">Todos/as</option>
+    
+        <option {% if centro == 'PK001' %} selected="" {% endif %} value="?centro_trabajo__exact=PK001">Oficina sede de la GRTSE</option>
+    
+        <option {% if centro == 'PK0A0' %} selected="" {% endif %} value="?centro_trabajo__exact=PK0A0">Zona de transmisión Villahermosa</option>
+    
+        <option {% if centro == 'PK0B0' %} selected="" {% endif %} value="?centro_trabajo__exact=PK0B0">Zona de transmisión Tuxtla</option>
+    
+        <option {% if centro == 'PK0C0' %} selected="" {% endif %} value="?centro_trabajo__exact=PK0C0">Zona de transmisión Tapachula</option>
+    
+        <option {% if centro == 'PK0D0' %} selected="" {% endif %} value="?centro_trabajo__exact=PK0D0">Zona de transmisión Istmo</option>
+    
+        <option {% if centro == 'PK0E0' %} selected="" {% endif %} value="?centro_trabajo__exact=PK0E0">Zona de transmisión Malpaso</option>
+    
+        <option {% if centro == 'PK0F0' %} selected="" {% endif %} value="?centro_trabajo__exact=PK0F0">Zona de operación de transmisión STE</option>
+    
+        <option {% if centro == 'PK0A1' %} selected="" {% endif %} value="?centro_trabajo__exact=PK0A1">Zona de transmisión Villahermosa sector Chontalpa</option>
+    
+        <option {% if centro == 'PK0B1' %} selected="" {% endif %} value="?centro_trabajo__exact=PK0B1">Zona de transmisión Tuxtla sector Chicoasén</option>
+    
+        <option {% if centro == 'PK0B2' %} selected="" {% endif %} value="?centro_trabajo__exact=PK0B2">Zona de transmisión Tuxtla sector Angostura</option>
+    
+        <option {% if centro == 'PK0D1' %} selected="" {% endif %} value="?centro_trabajo__exact=PK0D1">Zona de transmisión Istmo sector Oaxaca potencia</option>
+    
+        <option {% if centro == 'PK0E1' %} selected="" {% endif %} value="?centro_trabajo__exact=PK0E1">Zona de transmisión Malpaso sector Peñitas</option>
+    
+    </select>
+</div>
+</div>
+      </div>
+</div>
+
+
+
+{% endblock content %}

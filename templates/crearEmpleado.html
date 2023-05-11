@@ -1,0 +1,56 @@
+
+{% extends 'admininicio.html' %}
+{% load static %}
+{% block content %}
+
+<div class="main-content">
+				<div class="container-fluid">
+
+						<div class="panel panel-headline">
+
+				<div class="panel-heading">
+					<h3 class="panel-title">EMPLEADO</h3>
+					<p class="panel-subtitle">Ingrese cada uno de los datos siguientes</p>
+				</div>
+
+
+				<div class="panel-body">			
+<form method="post">
+{% csrf_token %}
+  <table>
+    {{ form.as_table }}
+    
+  <table>
+  <br>
+  <br>
+  
+  <button class="btn btn-outline-success float-left" type="submit" >Guardar</button>
+  <a href="{% url 'empleados' %}" class="btn btn-outline-secondary float-right">Cancelar</a>
+
+
+</form>
+</div>
+	
+
+						</div>
+							</div>			
+						</div>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+{% endblock content %}
